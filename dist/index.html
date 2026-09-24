@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081a32">
+  <meta name="description" content="Lời mời tham dự lễ tốt nghiệp tại Đại học Bách khoa Hà Nội.">
+  <title>Lời mời tốt nghiệp — Nguyễn Khánh Nam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&family=Roboto+Condensed:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23081a32'/%3E%3Cpath d='M10 24 32 13l22 11-22 11L10 24Zm8 7v11c8 7 20 7 28 0V31' fill='none' stroke='%23fff' stroke-width='5' stroke-linejoin='round'/%3E%3Ccircle cx='53' cy='40' r='4' fill='%23c51f3a'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --navy: #081a32;
+      --red: #bd1733;
+      --paper: #fffdf9;
+      --ink: #101827;
+      --muted: #667080;
+      --line: rgba(8, 26, 50, .16);
+      --sans: "Be Vietnam Pro", Arial, sans-serif;
+      --display: "Roboto Condensed", "Arial Narrow", sans-serif;
+      --script: "Playfair Display", Georgia, serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: radial-gradient(circle at 18% 12%, #183c62, transparent 28rem), linear-gradient(135deg, #051326, #0a2240 58%, #06172d);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .page-shell {
+      min-height: 100svh;
+      padding: clamp(16px, 4vw, 46px);
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+    .page-shell::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .1;
+      background-image: linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px);
+      background-size: 54px 54px;
+    }
+    .invitation {
+      width: min(100%, 800px);
+      aspect-ratio: 4 / 5;
+      min-height: 850px;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 36px 110px rgba(0,7,17,.5), 0 2px 8px rgba(0,0,0,.18);
+    }
+    .campus-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 54%;
+      filter: saturate(.7) contrast(.92) brightness(1.04);
+    }
+    .invitation::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(180deg, rgba(255,253,249,.94) 0%, rgba(255,253,249,.79) 30%, rgba(255,253,249,.2) 57%, rgba(5,19,38,.02) 74%, rgba(5,19,38,.32) 100%),
+        linear-gradient(90deg, rgba(255,255,255,.28), transparent 38%, rgba(255,255,255,.12));
+    }
+    .invitation::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      z-index: 5;
+      pointer-events: none;
+      border: 1px solid rgba(8,26,50,.16);
+    }
+    .invite-header {
+      height: 130px;
+      padding: 30px 42px 20px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 30px;
+    }
+    .graduation-cap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 4;
+      width: 210px;
+      height: auto;
+      filter: drop-shadow(10px 16px 14px rgba(2, 10, 20, .18));
+      pointer-events: none;
+      user-select: none;
+    }
+    .header-brand { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .soict-logo { width: clamp(142px, 23vw, 195px); height: auto; display: block; }
+    .edition {
+      margin-top: 0;
+      color: var(--navy);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      line-height: 1.7;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .invite-copy {
+      width: min(620px, calc(100% - 64px));
+      margin: 24px auto 0;
+      padding: 30px 52px 38px;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .invite-copy::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(255,253,249,.93), rgba(255,253,249,.67) 58%, transparent 76%);
+      filter: blur(2px);
+    }
+    .overline {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: .69rem;
+      font-weight: 700;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font: 800 clamp(3.7rem, 8vw, 6rem)/.87 var(--display);
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+    h1 span { display: block; }
+    h1 em {
+      display: block;
+      margin-top: 14px;
+      color: var(--red);
+      font: 600 italic clamp(1.65rem, 3.8vw, 2.45rem)/1 var(--script);
+      letter-spacing: -.02em;
+      text-transform: none;
+    }
+    .honoree-label {
+      margin: 38px 0 6px;
+      color: var(--muted);
+      font-size: .61rem;
+      font-weight: 700;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+    }
+    .honoree { margin: 0; color: var(--red); font: 600 italic clamp(1.55rem, 3vw, 2.05rem)/1.3 var(--script); }
+    .event-line {
+      width: min(460px, 100%);
+      margin: 34px auto 0;
+      padding-top: 23px;
+      border-top: 1px solid var(--line);
+      color: var(--navy);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .19em;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+    .event-line strong { display: block; font-size: 1rem; letter-spacing: .17em; }
+    .event-line span { color: var(--muted); }
+    .actions { margin-top: 29px; display: flex; align-items: center; justify-content: center; gap: 24px; }
+    .primary-link, .secondary-link {
+      min-height: 45px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+    .primary-link { padding: 0 22px; color: #fff; background: var(--navy); box-shadow: 0 10px 25px rgba(8,26,50,.16); }
+    .primary-link:hover { background: var(--red); transform: translateY(-2px); }
+    .secondary-link { color: var(--red); border-bottom: 1px solid currentColor; }
+    .secondary-link:hover { color: var(--navy); }
+    .primary-link:focus-visible, .secondary-link:focus-visible, .close-link:focus-visible, .detail-link:focus-visible { outline: 3px solid #e2af52; outline-offset: 4px; }
+    .detail-panel {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      padding: 20px;
+      display: grid;
+      place-items: center;
+      background: rgba(2,10,22,.78);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .22s ease, visibility .22s ease;
+    }
+    .detail-panel:target { opacity: 1; visibility: visible; }
+    .detail-card {
+      width: min(100%, 560px);
+      max-height: calc(100svh - 40px);
+      overflow-y: auto;
+      padding: clamp(30px, 6vw, 54px);
+      position: relative;
+      background: var(--paper);
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+    }
+    .detail-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--red); }
+    .close-link { position: absolute; top: 24px; right: 26px; color: var(--muted); font-size: .74rem; font-weight: 700; text-decoration: none; }
+    .detail-kicker { margin: 0 0 8px; color: var(--red); font-size: .66rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+    .detail-card h2 { margin: 0 0 32px; color: var(--navy); font-size: clamp(2rem, 5vw, 3rem); line-height: 1.05; letter-spacing: -.045em; }
+    .tabs {
+      margin-bottom: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .tab-button {
+      min-height: 46px;
+      padding: 0 8px;
+      position: relative;
+      border: 0;
+      color: var(--muted);
+      background: transparent;
+      font: 700 .73rem/1 var(--sans);
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .tab-button::after { content: ""; position: absolute; right: 0; bottom: -1px; left: 0; height: 3px; background: transparent; }
+    .tab-button[aria-selected="true"] { color: var(--red); }
+    .tab-button[aria-selected="true"]::after { background: var(--red); }
+    .tab-button:focus-visible { outline: 3px solid #e2af52; outline-offset: -3px; }
+    .tab-panel[hidden] { display: none; }
+    .schedule-date { margin: 0 0 15px; color: var(--navy); font-size: .82rem; font-weight: 700; }
+    .schedule-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    .schedule-table th, .schedule-table td { padding: 13px 14px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .schedule-table th { color: var(--navy); background: rgba(8,26,50,.045); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+    .schedule-table th:first-child, .schedule-table td:first-child { width: 105px; color: var(--red); font-weight: 700; white-space: nowrap; }
+    .schedule-table ul { margin: 0; padding-left: 18px; }
+    .schedule-table li + li { margin-top: 7px; }
+    .schools { margin-top: 10px; display: grid; gap: 5px; color: var(--muted); font-size: .78rem; }
+    .gallery-viewport { overflow: hidden; border: 1px solid var(--line); touch-action: pan-y; cursor: grab; }
+    .gallery-viewport:active { cursor: grabbing; }
+    .gallery-track { display: flex; transition: transform .45s cubic-bezier(.22,.61,.36,1); }
+    .gallery-slide {
+      min-width: 100%;
+      aspect-ratio: 4 / 3;
+      padding: 28px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      overflow: hidden;
+      background: linear-gradient(145deg, #142e50, #081a32 58%, #681428);
+    }
+    .gallery-slide:nth-child(2) { background: linear-gradient(145deg, #f6ede5, #d7b59f 55%, #8d2638); }
+    .gallery-slide:nth-child(3) { background: linear-gradient(145deg, #234f61, #0d2838 56%, #081a32); }
+    .gallery-slide::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .gallery-slide::after {
+      content: "+";
+      position: absolute;
+      top: 50%; left: 50%;
+      color: rgba(255,255,255,.45);
+      font: 300 4rem/1 var(--sans);
+      transform: translate(-50%, -55%);
+    }
+    .gallery-slide span { position: relative; z-index: 1; font-size: .69rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .gallery-toolbar { margin-top: 15px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .gallery-dots { display: flex; gap: 7px; }
+    .gallery-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: #c8cdd3; cursor: pointer; }
+    .gallery-dot.active { background: var(--red); transform: scale(1.25); }
+    .gallery-controls { display: flex; gap: 8px; }
+    .gallery-arrow { width: 38px; height: 38px; border: 1px solid var(--line); color: var(--navy); background: transparent; font-size: 1rem; cursor: pointer; }
+    .gallery-hint { margin: 14px 0 0; color: var(--muted); font-size: .76rem; }
+    .note-card { padding: 26px; border-left: 4px solid var(--red); background: rgba(8,26,50,.045); }
+    .note-card h3 { margin: 0 0 11px; color: var(--navy); font-size: 1rem; }
+    .note-card p { margin: 0; color: #4e5968; font-size: .88rem; line-height: 1.75; }
+    .parking-list { margin: 18px 0 0; padding: 0; display: grid; gap: 8px; list-style: none; }
+    .parking-list li { display: flex; gap: 10px; color: var(--navy); font-size: .82rem; font-weight: 600; }
+    .parking-list li::before { content: "—"; color: var(--red); }
+    .map-note { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .map-note h3 { margin: 0 0 5px; color: var(--navy); font-size: .92rem; }
+    .map-note p { margin: 0 0 12px; color: var(--muted); font-size: .77rem; }
+    .map-thumb {
+      width: 100%;
+      padding: 0;
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #eef0f2;
+      cursor: zoom-in;
+    }
+    .map-thumb img { width: 100%; height: auto; display: block; transition: transform .25s ease, filter .25s ease; }
+    .map-thumb:hover img { transform: scale(1.025); filter: brightness(.93); }
+    .map-thumb::after {
+      content: "Nhấn để phóng to  ↗";
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      padding: 7px 10px;
+      color: #fff;
+      background: rgba(8,26,50,.88);
+      font: 700 .65rem/1 var(--sans);
+      letter-spacing: .05em;
+    }
+    .map-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      padding: clamp(10px, 2vw, 24px);
+      display: grid;
+      place-items: center;
+      background: rgba(2,8,18,.94);
+      backdrop-filter: blur(10px);
+    }
+    .map-lightbox[hidden] { display: none; }
+    .map-viewer { width: min(1180px, 100%); height: min(900px, calc(100svh - 30px)); display: grid; grid-template-rows: auto 1fr; }
+    .map-toolbar { padding: 10px 0; display: flex; align-items: center; justify-content: space-between; gap: 15px; color: #fff; }
+    .map-toolbar strong { font-size: .84rem; letter-spacing: .06em; }
+    .map-tools { display: flex; gap: 7px; }
+    .map-tool {
+      min-width: 42px;
+      min-height: 40px;
+      padding: 0 12px;
+      border: 1px solid rgba(255,255,255,.24);
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      font: 700 .76rem/1 var(--sans);
+      cursor: pointer;
+    }
+    .map-tool:hover { background: rgba(255,255,255,.18); }
+    .map-tool.close { margin-left: 8px; background: var(--red); border-color: var(--red); }
+    .map-canvas {
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: #dfe2e5;
+      touch-action: none;
+      cursor: grab;
+    }
+    .map-canvas.dragging { cursor: grabbing; }
+    .map-full {
+      max-width: 94%;
+      max-height: 94%;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+      transform-origin: center;
+      will-change: transform;
+    }
+    .detail-actions { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .detail-link { min-height: 47px; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; color: #fff; background: var(--navy); font-size: .74rem; font-weight: 700; text-align: center; text-decoration: none; }
+    .detail-link:last-child { background: var(--red); }
+    @media (max-width: 720px) {
+      .page-shell { padding: 10px; align-items: start; }
+      .invitation { width: 100%; min-height: 820px; aspect-ratio: auto; }
+      .invitation::before { inset: 9px; }
+      .campus-bg { object-position: center 60%; }
+      .invite-header { height: 105px; padding: 23px 25px 15px; }
+      .graduation-cap { top: 0; left: 0; width: 175px; }
+      .soict-logo { width: 148px; }
+      .edition { margin-top: 3px; font-size: .5rem; letter-spacing: .13em; }
+      .invite-copy { width: calc(100% - 28px); margin-top: 30px; padding: 24px 18px 32px; }
+      h1 { font-size: clamp(3.45rem, 15.5vw, 5rem); }
+      .honoree-label { margin-top: 31px; }
+      .event-line { margin-top: 28px; }
+    }
+    @media (max-width: 430px) {
+      .edition { display: none; }
+      .graduation-cap { width: 158px; }
+      .actions { flex-direction: column; gap: 12px; }
+      .primary-link { width: min(100%, 240px); }
+      .detail-row { grid-template-columns: 65px 1fr; gap: 12px; }
+      .detail-actions { grid-template-columns: 1fr; }
+      .schedule-table th, .schedule-table td { padding: 10px 9px; }
+      .schedule-table th:first-child, .schedule-table td:first-child { width: 82px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <article class="invitation" aria-labelledby="invitation-title">
+      <img class="campus-bg" src="assets/hust-parabol-campus-bg-v2.png" alt="" aria-hidden="true">
+      <img class="graduation-cap" src="assets/graduation-cap-tassel.png" alt="Mũ tốt nghiệp màu đỏ với tua rua đen">
+      <header class="invite-header">
+        <div class="header-brand">
+          <img class="soict-logo" src="assets/soict-logo.png" alt="SOICT — Trường Công nghệ Thông tin và Truyền thông, Đại học Bách khoa Hà Nội">
+          <span class="edition">Graduation invitation<br>Class of 2026</span>
+        </div>
+      </header>
+      <div class="invite-copy">
+        <p class="overline">Trân trọng kính mời</p>
+        <h1 id="invitation-title"><span>Lễ tốt nghiệp</span><em>Graduation Day</em></h1>
+        <p class="honoree-label">Chung vui và chụp ảnh cùng</p>
+        <p class="honoree">Nguyễn Khánh Nam</p>
+        <p class="event-line">Chủ Nhật · Ngày 27 tháng 9 năm 2026<strong>09:00 - 11:30</strong><span>Hội trường C2 · ĐHBK Hà Nội</span></p>
+        <div class="actions">
+          <a class="primary-link" href="#chi-tiet">Xem chi tiết</a>
+          <a class="secondary-link" href="https://www.google.com/maps/search/?api=1&amp;query=Hanoi+University+of+Science+and+Technology" target="_blank" rel="noopener">Chỉ đường ↗</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <section class="detail-panel" id="chi-tiet" aria-labelledby="detail-title">
+    <div class="detail-card">
+      <a class="close-link" href="#" aria-label="Đóng thông tin chi tiết">Đóng ✕</a>
+      <p class="detail-kicker">Thông tin buổi lễ</p>
+      <h2 id="detail-title">Hẹn gặp bạn<br>tại Bách Khoa.</h2>
+      <div class="tabs" role="tablist" aria-label="Nội dung chi tiết">
+        <button class="tab-button" id="tab-time" role="tab" aria-selected="true" aria-controls="panel-time" type="button">Thời gian</button>
+        <button class="tab-button" id="tab-gallery" role="tab" aria-selected="false" aria-controls="panel-gallery" type="button">Gallery</button>
+        <button class="tab-button" id="tab-note" role="tab" aria-selected="false" aria-controls="panel-note" type="button">Lưu ý</button>
+      </div>
+
+      <div class="tab-panel" id="panel-time" role="tabpanel" aria-labelledby="tab-time">
+        <p class="schedule-date">Sáng Chủ Nhật, ngày 27/09/2026</p>
+        <table class="schedule-table">
+          <thead><tr><th>Thời gian</th><th>Nội dung</th></tr></thead>
+          <tbody>
+            <tr><td>07h15–07h45</td><td>Sinh viên mượn Lễ phục tốt nghiệp và Phiếu lên sân khấu nhận bằng tốt nghiệp.</td></tr>
+            <tr><td>07h45–08h00</td><td>Văn nghệ chào mừng.</td></tr>
+            <tr>
+              <td>08h00–11h30</td>
+              <td>
+                <ul><li>Chương trình Lễ tốt nghiệp bắt đầu.</li><li>Trao bằng tốt nghiệp cho sinh viên các Trường/Khoa theo thứ tự:</li></ul>
+                <div class="schools"><span>+ Trường CNTT&amp;TT</span><span>+ Trường Vật liệu</span><span>+ Khoa Vật lý kỹ thuật</span></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="detail-actions">
+          <a class="detail-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=L%E1%BB%85+t%E1%BB%91t+nghi%E1%BB%87p+c%E1%BB%A7a+Nguy%E1%BB%85n+Kh%C3%A1nh+Nam&amp;dates=20260927T001500Z%2F20260927T043000Z&amp;location=%C4%90%E1%BA%A1i+h%E1%BB%8Dc+B%C3%A1ch+khoa+H%C3%A0+N%E1%BB%99i" target="_blank" rel="noopener">Thêm vào lịch ↗</a>
+          <a class="detail-link" href="https://www.google.com/maps/search/?api=1&amp;query=Hanoi+University+of+Science+and+Technology" target="_blank" rel="noopener">Mở bản đồ ↗</a>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="panel-gallery" role="tabpanel" aria-labelledby="tab-gallery" hidden>
+        <div class="gallery-viewport" id="galleryViewport">
+          <div class="gallery-track" id="galleryTrack">
+            <div class="gallery-slide"><span>Khoảnh khắc 01 · Thêm ảnh tại đây</span></div>
+            <div class="gallery-slide"><span>Khoảnh khắc 02 · Thêm ảnh tại đây</span></div>
+            <div class="gallery-slide"><span>Khoảnh khắc 03 · Thêm ảnh tại đây</span></div>
+          </div>
+        </div>
+        <div class="gallery-toolbar">
+          <div class="gallery-dots" aria-label="Chọn ảnh">
+            <button class="gallery-dot active" type="button" aria-label="Ảnh 1"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 2"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 3"></button>
+          </div>
+          <div class="gallery-controls">
+            <button class="gallery-arrow" id="galleryPrev" type="button" aria-label="Ảnh trước">←</button>
+            <button class="gallery-arrow" id="galleryNext" type="button" aria-label="Ảnh tiếp theo">→</button>
+          </div>
+        </div>
+        <p class="gallery-hint">Vuốt sang trái hoặc phải để chuyển ảnh. Gallery tự động chuyển sau mỗi 4 giây.</p>
+      </div>
+
+      <div class="tab-panel" id="panel-note" role="tabpanel" aria-labelledby="tab-note" hidden>
+        <div class="note-card">
+          <h3>Một lưu ý nhỏ dành cho bạn</h3>
+          <p>Ngày hôm đó, tại Bách Khoa Hà Nội có thể sẽ đông, mong các bạn thông cảm và chủ động sắp xếp thời gian di chuyển.</p>
+          <ul class="parking-list">
+            <li>Xe máy có thể gửi tại Bể bơi Bách Khoa, tòa B1 hoặc trong trường Bách Khoa.</li>
+            <li>Nếu đi ô tô, bạn có thể đi thẳng lên khu vực gần Mixue để gửi xe.</li>
+          </ul>
+          <div class="map-note">
+            <h3>Sơ đồ khuôn viên Bách Khoa</h3>
+            <p>Nhấn vào ảnh để mở bản đồ lớn và xem chi tiết các tòa nhà.</p>
+            <button class="map-thumb" id="openMap" type="button" aria-label="Mở sơ đồ khuôn viên Bách Khoa">
+              <img src="assets/hust-campus-map.jpg" alt="Sơ đồ khuôn viên Đại học Bách khoa Hà Nội">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="map-lightbox" id="mapLightbox" role="dialog" aria-modal="true" aria-labelledby="mapViewerTitle" hidden>
+    <div class="map-viewer">
+      <div class="map-toolbar">
+        <strong id="mapViewerTitle">Sơ đồ khuôn viên Bách Khoa</strong>
+        <div class="map-tools">
+          <button class="map-tool" id="zoomOut" type="button" aria-label="Thu nhỏ">−</button>
+          <button class="map-tool" id="zoomReset" type="button">100%</button>
+          <button class="map-tool" id="zoomIn" type="button" aria-label="Phóng to">+</button>
+          <button class="map-tool close" id="closeMap" type="button">Đóng ✕</button>
+        </div>
+      </div>
+      <div class="map-canvas" id="mapCanvas" aria-label="Kéo để di chuyển sơ đồ khi phóng to">
+        <img class="map-full" id="mapImage" src="assets/hust-campus-map.jpg" alt="Sơ đồ chi tiết khuôn viên Đại học Bách khoa Hà Nội" draggable="false">
+      </div>
+    </div>
+  </div>
+  <script>
+    const tabButtons = [...document.querySelectorAll('.tab-button')];
+    const tabPanels = [...document.querySelectorAll('.tab-panel')];
+
+    function openTab(button) {
+      tabButtons.forEach(item => item.setAttribute('aria-selected', String(item === button)));
+      tabPanels.forEach(panel => { panel.hidden = panel.id !== button.getAttribute('aria-controls'); });
+    }
+
+    tabButtons.forEach((button, index) => {
+      button.addEventListener('click', () => openTab(button));
+      button.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        const direction = event.key === 'ArrowRight' ? 1 : -1;
+        const next = tabButtons[(index + direction + tabButtons.length) % tabButtons.length];
+        openTab(next);
+        next.focus();
+      });
+    });
+
+    const galleryTrack = document.getElementById('galleryTrack');
+    const galleryViewport = document.getElementById('galleryViewport');
+    const galleryDots = [...document.querySelectorAll('.gallery-dot')];
+    let galleryIndex = 0;
+    let swipeStart = 0;
+    let autoPlay;
+
+    function showSlide(index) {
+      galleryIndex = (index + galleryDots.length) % galleryDots.length;
+      galleryTrack.style.transform = `translateX(-${galleryIndex * 100}%)`;
+      galleryDots.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === galleryIndex));
+    }
+    function startAutoPlay() {
+      clearInterval(autoPlay);
+      autoPlay = setInterval(() => showSlide(galleryIndex + 1), 4000);
+    }
+
+    document.getElementById('galleryPrev').addEventListener('click', () => { showSlide(galleryIndex - 1); startAutoPlay(); });
+    document.getElementById('galleryNext').addEventListener('click', () => { showSlide(galleryIndex + 1); startAutoPlay(); });
+    galleryDots.forEach((dot, index) => dot.addEventListener('click', () => { showSlide(index); startAutoPlay(); }));
+    galleryViewport.addEventListener('pointerdown', event => { swipeStart = event.clientX; clearInterval(autoPlay); });
+    galleryViewport.addEventListener('pointerup', event => {
+      const distance = event.clientX - swipeStart;
+      if (Math.abs(distance) > 45) showSlide(galleryIndex + (distance < 0 ? 1 : -1));
+      startAutoPlay();
+    });
+    galleryViewport.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    galleryViewport.addEventListener('mouseleave', startAutoPlay);
+    startAutoPlay();
+
+    const mapLightbox = document.getElementById('mapLightbox');
+    const mapCanvas = document.getElementById('mapCanvas');
+    const mapImage = document.getElementById('mapImage');
+    const zoomReset = document.getElementById('zoomReset');
+    let mapScale = 1;
+    let mapX = 0;
+    let mapY = 0;
+    let isDraggingMap = false;
+    let dragOriginX = 0;
+    let dragOriginY = 0;
+
+    function renderMap() {
+      mapImage.style.transform = `translate(${mapX}px, ${mapY}px) scale(${mapScale})`;
+      zoomReset.textContent = `${Math.round(mapScale * 100)}%`;
+    }
+    function setMapScale(nextScale) {
+      mapScale = Math.min(4, Math.max(1, nextScale));
+      if (mapScale === 1) { mapX = 0; mapY = 0; }
+      renderMap();
+    }
+    function resetMap() {
+      mapScale = 1;
+      mapX = 0;
+      mapY = 0;
+      renderMap();
+    }
+    function openMapViewer() {
+      mapLightbox.hidden = false;
+      document.body.style.overflow = 'hidden';
+      resetMap();
+      document.getElementById('closeMap').focus();
+    }
+    function closeMapViewer() {
+      mapLightbox.hidden = true;
+      document.body.style.overflow = '';
+      document.getElementById('openMap').focus();
+    }
+
+    document.getElementById('openMap').addEventListener('click', openMapViewer);
+    document.getElementById('closeMap').addEventListener('click', closeMapViewer);
+    document.getElementById('zoomIn').addEventListener('click', () => setMapScale(mapScale + .35));
+    document.getElementById('zoomOut').addEventListener('click', () => setMapScale(mapScale - .35));
+    zoomReset.addEventListener('click', resetMap);
+    mapLightbox.addEventListener('click', event => { if (event.target === mapLightbox) closeMapViewer(); });
+    mapCanvas.addEventListener('dblclick', () => setMapScale(mapScale === 1 ? 2 : 1));
+    mapCanvas.addEventListener('wheel', event => {
+      event.preventDefault();
+      setMapScale(mapScale + (event.deltaY < 0 ? .25 : -.25));
+    }, { passive: false });
+    mapCanvas.addEventListener('pointerdown', event => {
+      if (mapScale === 1) return;
+      isDraggingMap = true;
+      dragOriginX = event.clientX - mapX;
+      dragOriginY = event.clientY - mapY;
+      mapCanvas.classList.add('dragging');
+      mapCanvas.setPointerCapture(event.pointerId);
+    });
+    mapCanvas.addEventListener('pointermove', event => {
+      if (!isDraggingMap) return;
+      mapX = event.clientX - dragOriginX;
+      mapY = event.clientY - dragOriginY;
+      renderMap();
+    });
+    mapCanvas.addEventListener('pointerup', event => {
+      isDraggingMap = false;
+      mapCanvas.classList.remove('dragging');
+      if (mapCanvas.hasPointerCapture(event.pointerId)) mapCanvas.releasePointerCapture(event.pointerId);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !mapLightbox.hidden) closeMapViewer();
+    });
+  </script>
+</body>
+</html>
