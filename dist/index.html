@@ -277,25 +277,30 @@
       align-items: flex-end;
       color: #fff;
       overflow: hidden;
+      border: 0;
+      text-align: left;
+      cursor: zoom-in;
       background: linear-gradient(145deg, #142e50, #081a32 58%, #681428);
     }
-    .gallery-slide:nth-child(2) { background: linear-gradient(145deg, #f6ede5, #d7b59f 55%, #8d2638); }
-    .gallery-slide:nth-child(3) { background: linear-gradient(145deg, #234f61, #0d2838 56%, #081a32); }
+    .gallery-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease, filter .35s ease; }
+    .gallery-slide:hover img { transform: scale(1.04); filter: brightness(.8); }
     .gallery-slide::before {
       content: "";
       position: absolute;
       inset: 18px;
+      z-index: 1;
       border: 1px solid rgba(255,255,255,.3);
     }
     .gallery-slide::after {
       content: "+";
       position: absolute;
       top: 50%; left: 50%;
+      z-index: 1;
       color: rgba(255,255,255,.45);
       font: 300 4rem/1 var(--sans);
       transform: translate(-50%, -55%);
     }
-    .gallery-slide span { position: relative; z-index: 1; font-size: .69rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .gallery-slide span { position: relative; z-index: 2; padding: 7px 10px; font-size: .69rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: rgba(8,26,50,.72); }
     .gallery-toolbar { margin-top: 15px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .gallery-dots { display: flex; gap: 7px; }
     .gallery-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: #c8cdd3; cursor: pointer; }
@@ -385,6 +390,21 @@
     .detail-actions { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .detail-link { min-height: 47px; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; color: #fff; background: var(--navy); font-size: .74rem; font-weight: 700; text-align: center; text-decoration: none; }
     .detail-link:last-child { background: var(--red); }
+    .gallery-lightbox { position: fixed; inset: 0; z-index: 70; padding: clamp(10px, 2vw, 24px); display: grid; place-items: center; background: rgba(2,8,18,.94); backdrop-filter: blur(10px); }
+    .gallery-lightbox[hidden] { display: none; }
+    .gallery-viewer { width: min(1180px, 100%); height: min(900px, calc(100svh - 30px)); display: grid; grid-template-rows: auto 1fr; }
+    .gallery-lightbox-toolbar { padding: 10px 0; display: flex; align-items: center; justify-content: space-between; gap: 15px; color: #fff; }
+    .gallery-lightbox-toolbar strong { font-size: .84rem; letter-spacing: .06em; }
+    .gallery-lightbox-tools { display: flex; gap: 7px; }
+    .gallery-lightbox-tool { min-width: 42px; min-height: 40px; padding: 0 12px; border: 1px solid rgba(255,255,255,.24); color: #fff; background: rgba(255,255,255,.08); font: 700 .76rem/1 var(--sans); cursor: pointer; }
+    .gallery-lightbox-tool:hover { background: rgba(255,255,255,.18); }
+    .gallery-lightbox-tool.close { margin-left: 8px; background: var(--red); border-color: var(--red); }
+    .gallery-canvas { min-height: 0; position: relative; overflow: hidden; display: grid; place-items: center; background: rgba(255,255,255,.05); touch-action: none; cursor: grab; }
+    .gallery-canvas.dragging { cursor: grabbing; }
+    .gallery-full { max-width: 94%; max-height: 94%; display: block; user-select: none; pointer-events: none; transform-origin: center; will-change: transform; }
+    .gallery-nav { position: absolute; top: 50%; z-index: 2; width: 42px; height: 48px; border: 1px solid rgba(255,255,255,.3); color: #fff; background: rgba(8,26,50,.7); font-size: 1.4rem; transform: translateY(-50%); cursor: pointer; }
+    .gallery-nav.prev { left: 14px; }
+    .gallery-nav.next { right: 14px; }
     @media (max-width: 720px) {
       .page-shell { padding: 10px; align-items: start; }
       .invitation { width: 100%; min-height: 820px; aspect-ratio: auto; }
@@ -475,9 +495,23 @@
       <div class="tab-panel" id="panel-gallery" role="tabpanel" aria-labelledby="tab-gallery" hidden>
         <div class="gallery-viewport" id="galleryViewport">
           <div class="gallery-track" id="galleryTrack">
-            <div class="gallery-slide"><span>Khoảnh khắc 01 · Thêm ảnh tại đây</span></div>
-            <div class="gallery-slide"><span>Khoảnh khắc 02 · Thêm ảnh tại đây</span></div>
-            <div class="gallery-slide"><span>Khoảnh khắc 03 · Thêm ảnh tại đây</span></div>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/126e3a9081f001ae58e15.jpg"><img src="assets/moment/126e3a9081f001ae58e15.jpg" alt="Khoảnh khắc 01" loading="lazy"><span>Khoảnh khắc 01</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/25fee7175c77dc2985668.jpg"><img src="assets/moment/25fee7175c77dc2985668.jpg" alt="Khoảnh khắc 02" loading="lazy"><span>Khoảnh khắc 02</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/4438e6db5dbbdde584aa12.jpg"><img src="assets/moment/4438e6db5dbbdde584aa12.jpg" alt="Khoảnh khắc 03" loading="lazy"><span>Khoảnh khắc 03</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/6be71c18a77827267e6911.jpg"><img src="assets/moment/6be71c18a77827267e6911.jpg" alt="Khoảnh khắc 04" loading="lazy"><span>Khoảnh khắc 04</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/8f61d7816ce1ecbfb5f01.jpg"><img src="assets/moment/8f61d7816ce1ecbfb5f01.jpg" alt="Khoảnh khắc 05" loading="lazy"><span>Khoảnh khắc 05</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/9d7b91902af0aaaef3e14.jpg"><img src="assets/moment/9d7b91902af0aaaef3e14.jpg" alt="Khoảnh khắc 06" loading="lazy"><span>Khoảnh khắc 06</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/9e4761aadaca5a9403db3.jpg"><img src="assets/moment/9e4761aadaca5a9403db3.jpg" alt="Khoảnh khắc 07" loading="lazy"><span>Khoảnh khắc 07</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/bfd1a8311351930fca4016.jpg"><img src="assets/moment/bfd1a8311351930fca4016.jpg" alt="Khoảnh khắc 08" loading="lazy"><span>Khoảnh khắc 08</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/c9d58f2b344bb415ed5a6.jpg"><img src="assets/moment/c9d58f2b344bb415ed5a6.jpg" alt="Khoảnh khắc 09" loading="lazy"><span>Khoảnh khắc 09</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/e18e6c6ad70a57540e1b14.jpg"><img src="assets/moment/e18e6c6ad70a57540e1b14.jpg" alt="Khoảnh khắc 10" loading="lazy"><span>Khoảnh khắc 10</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/e31d17fcac9c2cc2758d13.jpg"><img src="assets/moment/e31d17fcac9c2cc2758d13.jpg" alt="Khoảnh khắc 11" loading="lazy"><span>Khoảnh khắc 11</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/e7900476bf163f4866072.jpg"><img src="assets/moment/e7900476bf163f4866072.jpg" alt="Khoảnh khắc 12" loading="lazy"><span>Khoảnh khắc 12</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/ea0caaf2119291ccc8839.jpg"><img src="assets/moment/ea0caaf2119291ccc8839.jpg" alt="Khoảnh khắc 13" loading="lazy"><span>Khoảnh khắc 13</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/f4710390b8f038ae61e117.jpg"><img src="assets/moment/f4710390b8f038ae61e117.jpg" alt="Khoảnh khắc 14" loading="lazy"><span>Khoảnh khắc 14</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/f6e3b7030c638c3dd57215.jpg"><img src="assets/moment/f6e3b7030c638c3dd57215.jpg" alt="Khoảnh khắc 15" loading="lazy"><span>Khoảnh khắc 15</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/fb72bb9e00fe80a0d9ef7.jpg"><img src="assets/moment/fb72bb9e00fe80a0d9ef7.jpg" alt="Khoảnh khắc 16" loading="lazy"><span>Khoảnh khắc 16</span></button>
+            <button class="gallery-slide" type="button" data-gallery-image="assets/moment/fbafd4516f31ef6fb62010.jpg"><img src="assets/moment/fbafd4516f31ef6fb62010.jpg" alt="Khoảnh khắc 17" loading="lazy"><span>Khoảnh khắc 17</span></button>
           </div>
         </div>
         <div class="gallery-toolbar">
@@ -485,6 +519,20 @@
             <button class="gallery-dot active" type="button" aria-label="Ảnh 1"></button>
             <button class="gallery-dot" type="button" aria-label="Ảnh 2"></button>
             <button class="gallery-dot" type="button" aria-label="Ảnh 3"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 4"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 5"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 6"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 7"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 8"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 9"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 10"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 11"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 12"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 13"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 14"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 15"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 16"></button>
+            <button class="gallery-dot" type="button" aria-label="Ảnh 17"></button>
           </div>
           <div class="gallery-controls">
             <button class="gallery-arrow" id="galleryPrev" type="button" aria-label="Ảnh trước">←</button>
@@ -513,6 +561,25 @@
       </div>
     </div>
   </section>
+
+  <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-labelledby="galleryViewerTitle" hidden>
+    <div class="gallery-viewer">
+      <div class="gallery-lightbox-toolbar">
+        <strong id="galleryViewerTitle">Khoảnh khắc 01</strong>
+        <div class="gallery-lightbox-tools">
+          <button class="gallery-lightbox-tool" id="galleryZoomOut" type="button" aria-label="Thu nhỏ ảnh">−</button>
+          <button class="gallery-lightbox-tool" id="galleryZoomReset" type="button">100%</button>
+          <button class="gallery-lightbox-tool" id="galleryZoomIn" type="button" aria-label="Phóng to ảnh">+</button>
+          <button class="gallery-lightbox-tool close" id="galleryClose" type="button">Đóng ✕</button>
+        </div>
+      </div>
+      <div class="gallery-canvas" id="galleryCanvas" aria-label="Kéo để di chuyển ảnh khi phóng to">
+        <button class="gallery-nav prev" id="galleryLightboxPrev" type="button" aria-label="Ảnh trước">←</button>
+        <img class="gallery-full" id="galleryImage" src="" alt="">
+        <button class="gallery-nav next" id="galleryLightboxNext" type="button" aria-label="Ảnh tiếp theo">→</button>
+      </div>
+    </div>
+  </div>
 
   <div class="map-lightbox" id="mapLightbox" role="dialog" aria-modal="true" aria-labelledby="mapViewerTitle" hidden>
     <div class="map-viewer">
@@ -579,7 +646,86 @@
     });
     galleryViewport.addEventListener('mouseenter', () => clearInterval(autoPlay));
     galleryViewport.addEventListener('mouseleave', startAutoPlay);
+    const gallerySlides = [...document.querySelectorAll('.gallery-slide')];
+    gallerySlides.forEach((slide, index) => slide.addEventListener('click', () => openGalleryViewer(index)));
     startAutoPlay();
+
+    const galleryLightbox = document.getElementById('galleryLightbox');
+    const galleryCanvas = document.getElementById('galleryCanvas');
+    const galleryImage = document.getElementById('galleryImage');
+    const galleryViewerTitle = document.getElementById('galleryViewerTitle');
+    const galleryZoomReset = document.getElementById('galleryZoomReset');
+    let galleryLightboxIndex = 0;
+    let galleryScale = 1;
+    let galleryX = 0;
+    let galleryY = 0;
+    let isDraggingGallery = false;
+    let galleryDragOriginX = 0;
+    let galleryDragOriginY = 0;
+
+    function renderGalleryImage() {
+      galleryImage.style.transform = `translate(${galleryX}px, ${galleryY}px) scale(${galleryScale})`;
+      galleryZoomReset.textContent = `${Math.round(galleryScale * 100)}%`;
+    }
+    function setGalleryScale(nextScale) {
+      galleryScale = Math.min(4, Math.max(1, nextScale));
+      if (galleryScale === 1) { galleryX = 0; galleryY = 0; }
+      renderGalleryImage();
+    }
+    function showGalleryImage(index) {
+      galleryLightboxIndex = (index + gallerySlides.length) % gallerySlides.length;
+      const slide = gallerySlides[galleryLightboxIndex];
+      galleryImage.src = slide.dataset.galleryImage;
+      galleryImage.alt = slide.querySelector('img').alt;
+      galleryViewerTitle.textContent = slide.querySelector('span').textContent;
+      galleryScale = 1;
+      galleryX = 0;
+      galleryY = 0;
+      renderGalleryImage();
+    }
+    function openGalleryViewer(index) {
+      showGalleryImage(index);
+      galleryLightbox.hidden = false;
+      document.body.style.overflow = 'hidden';
+      document.getElementById('galleryClose').focus();
+    }
+    function closeGalleryViewer() {
+      galleryLightbox.hidden = true;
+      document.body.style.overflow = '';
+      gallerySlides[galleryLightboxIndex].focus();
+    }
+
+    document.getElementById('galleryClose').addEventListener('click', closeGalleryViewer);
+    document.getElementById('galleryLightboxPrev').addEventListener('click', () => showGalleryImage(galleryLightboxIndex - 1));
+    document.getElementById('galleryLightboxNext').addEventListener('click', () => showGalleryImage(galleryLightboxIndex + 1));
+    document.getElementById('galleryZoomIn').addEventListener('click', () => setGalleryScale(galleryScale + .35));
+    document.getElementById('galleryZoomOut').addEventListener('click', () => setGalleryScale(galleryScale - .35));
+    galleryZoomReset.addEventListener('click', () => setGalleryScale(1));
+    galleryLightbox.addEventListener('click', event => { if (event.target === galleryLightbox) closeGalleryViewer(); });
+    galleryCanvas.addEventListener('dblclick', () => setGalleryScale(galleryScale === 1 ? 2 : 1));
+    galleryCanvas.addEventListener('wheel', event => {
+      event.preventDefault();
+      setGalleryScale(galleryScale + (event.deltaY < 0 ? .25 : -.25));
+    }, { passive: false });
+    galleryCanvas.addEventListener('pointerdown', event => {
+      if (galleryScale === 1 || event.target !== galleryCanvas) return;
+      isDraggingGallery = true;
+      galleryDragOriginX = event.clientX - galleryX;
+      galleryDragOriginY = event.clientY - galleryY;
+      galleryCanvas.classList.add('dragging');
+      galleryCanvas.setPointerCapture(event.pointerId);
+    });
+    galleryCanvas.addEventListener('pointermove', event => {
+      if (!isDraggingGallery) return;
+      galleryX = event.clientX - galleryDragOriginX;
+      galleryY = event.clientY - galleryDragOriginY;
+      renderGalleryImage();
+    });
+    galleryCanvas.addEventListener('pointerup', event => {
+      isDraggingGallery = false;
+      galleryCanvas.classList.remove('dragging');
+      if (galleryCanvas.hasPointerCapture(event.pointerId)) galleryCanvas.releasePointerCapture(event.pointerId);
+    });
 
     const mapLightbox = document.getElementById('mapLightbox');
     const mapCanvas = document.getElementById('mapCanvas');
@@ -650,7 +796,10 @@
       if (mapCanvas.hasPointerCapture(event.pointerId)) mapCanvas.releasePointerCapture(event.pointerId);
     });
     document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !galleryLightbox.hidden) closeGalleryViewer();
       if (event.key === 'Escape' && !mapLightbox.hidden) closeMapViewer();
+      if (!galleryLightbox.hidden && event.key === 'ArrowLeft') showGalleryImage(galleryLightboxIndex - 1);
+      if (!galleryLightbox.hidden && event.key === 'ArrowRight') showGalleryImage(galleryLightboxIndex + 1);
     });
   </script>
 </body>
