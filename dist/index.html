@@ -128,6 +128,7 @@
       position: relative;
       z-index: 2;
       text-align: center;
+      container-type: inline-size;
     }
     .invite-copy::before {
       content: "";
@@ -152,7 +153,11 @@
       letter-spacing: -.06em;
       text-transform: uppercase;
     }
-    h1 span { display: block; }
+    h1 span {
+      display: block;
+      white-space: nowrap;
+      font-size: min(6rem, 14cqi);
+    }
     h1 em {
       display: block;
       margin-top: 14px;
@@ -428,7 +433,7 @@
         <p class="event-line">Chủ Nhật · Ngày 27 tháng 9 năm 2026<strong>09:00 - 11:30</strong><span>Hội trường C2 · ĐHBK Hà Nội</span></p>
         <div class="actions">
           <a class="primary-link" href="#chi-tiet">Xem chi tiết</a>
-          <a class="secondary-link" href="https://www.google.com/maps/search/?api=1&amp;query=Hanoi+University+of+Science+and+Technology" target="_blank" rel="noopener">Chỉ đường ↗</a>
+          <a class="secondary-link" href="https://maps.app.goo.gl/Zoeme2j8tsu9NE3SA" target="_blank" rel="noopener">Chỉ đường ↗</a>
         </div>
       </div>
     </article>
